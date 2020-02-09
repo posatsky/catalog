@@ -1,0 +1,14 @@
+{% extends 'storage/base_shop.html'%}
+
+{% block title%}
+  Перелік товарів
+{% endblock%}
+
+{% block content%}
+  <h1 class="mb-5">Товар:</h1>
+  {% for name in names%}
+    <p>
+      {{name}}
+    </p>
+  {% endfor%}
+{% endblock%}

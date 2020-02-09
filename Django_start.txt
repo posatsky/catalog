@@ -1,0 +1,102 @@
+﻿python -m pip install Django
+py -m django --version
+django-admin startproject mysite
+py manage.py runserver
+py manage.py runserver 8080
+
+
+python manage.py runserver
+python manage.py startapp app_name      #create project
+python manage.py migrate
+python manage.py makemigrations app_name
+python manage.py migrate
+
+
+#settings.py ---------modefi
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'app_name'
+]
+
+#urls.py----------m
+
+from django.urls import path, include
+path('admin/', admin.site.urls),
+path('shop/', include('app_name.urls')),
+
+
+#create app_name/urls.py
+
+from django.urls import path
+
+from .views import *
+#http://127.0.0.1:8080/storage
+urlpatterns = [
+    path('', posts_lists)
+]
+
+
+
+# app_name/views.py-------m
+from django.shortcuts import render
+def posts_lists(request):
+    n=['Oleh','Veasyl','Petro','Misha']
+    return render(request,'storage/index.html',context={'names':n})
+
+
+
+# app_name/models.py-------m
+
+
+from django.db import models
+
+# Create your models here.
+from django.db import models
+
+# Create your models here.
+from django.db import models
+
+# Create your models here.
+class Storage(models.Model):
+    title = models.CharField(max_length=150, db_index=True)
+    slug = models.SlugField(max_length=150, unique=True)
+    body = models.TextField(blank=True, db_index=True)
+    price = models.CharField(max_length=150, db_index=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return '{}'.format(self.title)
+
+
+#settings.py ---------modefi
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+        os.path.join(BASE_DIR, 'templates')
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+
+python manage.py sqlmigrate polls 0001
+python manage.py shell
+ from shop.models import Shop
