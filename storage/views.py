@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from.models import Product
 
 
 
 # Create your views here.
 def posts_lists(request):
-    n=['Oleh','Veasyl','Petro','Misha']
-    return render(request,'storage/index.html',context={'names':n})
+    products = Product.objects.all()
+    return render(request,'storage/index.html',context={'products':products})

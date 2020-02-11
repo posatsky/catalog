@@ -6,7 +6,18 @@
 
 {% block content%}
   <h1 class="mb-5">Товар:</h1>
-  {% for name in names%}
+  {% for product in products%}
+
+    <div class="card">
+      <div class="card-header">
+        {{product.date_pub}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text">{{product.body}}</<p>
+        <a href="#" class="btn btn-primary">Перегляд</a>
+      </div>
+  </div>
     <p>
       {{name}}
     </p>
