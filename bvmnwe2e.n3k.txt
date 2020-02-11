@@ -1,0 +1,30 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   db.sqlite3
+#	modified:   storage/__pycache__/models.cpython-37.pyc
+#	new file:   storage/migrations/0001_initial.py
+#	new file:   storage/migrations/__pycache__/0001_initial.cpython-37.pyc
+#	modified:   storage/models.py
+#	modified:   storage/templates/storage/index.html
+#	modified:   storage/views.py
+#
+
+database
+
+views.py
+from django.shortcuts import render
+from.models import Product
+
+
+
+# Create your views here.
+def posts_lists(request):
+    products = Product.objects.all()
+    return render(request,'storage/index.html',context={'products':products})
+

@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 # Create your models here.
 from django.db import models
@@ -11,6 +12,8 @@ class Product(models.Model):
     price = models.CharField(max_length=150, db_index=True)
     date_add = models.DateTimeField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        return reverse('product_datail_url', kwargs={'slug': self.slug}) # revers for py file link for post detail 
 
     def __str__(self):
         return '{}'.format(self.title)

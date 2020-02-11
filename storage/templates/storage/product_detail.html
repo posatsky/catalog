@@ -1,0 +1,16 @@
+{% extends 'storage/base_shop.html'%}
+
+  {% block title %}
+    {{product.title}}-{{block.super}}
+  {% endblock %}
+
+  {% block content %}
+
+    <h1 class="mt-5">
+        {{product.title}}
+    </h1>
+    <p>
+      {{product.body}}
+    </p>
+
+  {% endblock %}
